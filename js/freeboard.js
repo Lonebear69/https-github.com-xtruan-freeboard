@@ -2273,6 +2273,8 @@ function WidgetModel(theFreeboardModel, widgetPlugins) {
 			if (!_.isUndefined(self.widgetInstance) && _.isFunction(self.widgetInstance.onCalculatedValueChanged) && !_.isUndefined(returnValue)) {
 				try {
 					self.widgetInstance.onCalculatedValueChanged(settingName, returnValue);
+					// Force height refresh
+					self._heightUpdate.valueHasMutated();
 				}
 				catch (e) {
 					console.log(e.toString());
